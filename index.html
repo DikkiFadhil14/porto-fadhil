@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dikki Fadhillah, S.Kom | IT & Telecom Lead Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            accent: '#06b6d4',
+                            emerald: '#10b981'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .tech-grid-bg {
+            background-size: 30px 30px;
+            background-image: 
+                linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+        }
+        .dark .tech-grid-bg {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .animate-pulse-ring {
+            animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Toast Popup styling */
+        #toast {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-300 tech-grid-bg selection:bg-cyan-500 selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-slate-950/70 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center gap-2 group">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-mono font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                        DF
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Dikki Fadhillah</span>
+                        <span class="text-xs font-mono text-cyan-600 dark:text-cyan-400 block -mt-1 font-medium">S.Kom | Telecommunication Lead</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Items -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#about" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Tentang</a>
+                    <a href="#experience" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Pengalaman</a>
+                    <a href="#innovations" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Inovasi & Proyek</a>
+                    <a href="#calculator" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Kalkulator FO</a>
+                    <a href="#certifications" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Sertifikasi</a>
+                    <a href="#contact" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Kontak</a>
+                </nav>
+
+                <!-- Action Controls -->
+                <div class="flex items-center space-x-3">
+                    <!-- Dark/Light Mode Toggle -->
+                    <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700 focus:outline-none">
+                        <i id="themeSunIcon" class="fas fa-sun hidden text-amber-400 text-lg"></i>
+                        <i id="themeMoonIcon" class="fas fa-moon text-slate-700 dark:text-slate-300 text-lg"></i>
+                    </button>
+
+                    <!-- Contact CTA Button -->
+                    <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-sm transition-all shadow-md shadow-cyan-600/20 active:scale-95">
+                        <i class="fas fa-paper-plane mr-2 text-xs"></i> Hubungi Saya
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Tentang</a>
+            <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Pengalaman Kerja</a>
+            <a href="#innovations" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inovasi & Sistem</a>
+            <a href="#calculator" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">FO Calculator Tool</a>
+            <a href="#certifications" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sertifikasi & Edukasi</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg bg-cyan-600 text-white font-medium text-center">Kontak Saya</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION (Revised Layout & Photo Sizing inspired by reference design) -->
+        <section id="hero" class="relative pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left Column: Bio & Title -->
+                    <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                        
+                        <!-- Status Badge -->
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold font-mono">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                            <span>City Leader & O&M FTTx Specialist</span>
+                        </div>
+
+                        <!-- Main Title -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                            Halo, Saya <span class="bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-500 bg-clip-text text-transparent">Dikki Fadhillah</span>
+                        </h1>
+
+                        <!-- Dynamic Role Subtitle -->
+                        <div class="text-lg sm:text-xl font-mono text-slate-600 dark:text-slate-400 flex items-center justify-center lg:justify-start gap-2 h-8">
+                            <span class="text-cyan-500 font-bold">></span>
+                            <span id="typingEffect" class="border-r-2 border-cyan-500 pr-1"></span>
+                        </div>
+
+                        <!-- Paragraph Summary -->
+                        <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            Lulusan **Teknik Informatika (S.Kom, Cumlaude GPA 3.53)** berpengalaman lebih dari 9 tahun di industri **Telekomunikasi & Network Infrastructure**. Ahli dalam pengelolaan *FTTx, Fiber Optic O&M, Project Management, Data Analysis, hingga Pengembangan Automation Tools*.
+                        </p>
+
+                        <!-- Key Tags -->
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-2 pt-2">
+                            <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono"><i class="fas fa-network-wired text-cyan-500 mr-1.5"></i>FTTx / OSP Design</span>
+                            <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono"><i class="fas fa-chart-line text-cyan-500 mr-1.5"></i>Data Analytics & Dashboard</span>
+                            <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono"><i class="fas fa-robot text-cyan-500 mr-1.5"></i>Automation & Telegram Bot</span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                            <a href="#contact" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold text-center shadow-lg shadow-cyan-600/25 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
+                                <i class="fas fa-paper-plane"></i> Hubungi Saya
+                            </a>
+                            <a href="#experience" class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-center transition-all flex items-center justify-center gap-2">
+                                <i class="fas fa-briefcase"></i> Lihat Pengalaman
+                            </a>
+                            <button onclick="copyEmail()" class="w-full sm:w-auto px-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center justify-center" title="Salin Email">
+                                <i class="fas fa-copy mr-2"></i> Salin Email
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Revised Reference Portrait Layout & Sizing -->
+                    <div class="lg:col-span-6 flex justify-center lg:justify-end">
+                        <div class="relative w-full max-w-lg">
+                            
+                            <!-- Glowing background effect matching reference style -->
+                            <div class="absolute -inset-2 bg-gradient-to-tr from-cyan-500/20 via-blue-600/20 to-indigo-500/20 rounded-[2.5rem] blur-2xl opacity-70 animate-pulse-ring"></div>
+                            
+                            <!-- Main Portrait Frame Container -->
+                            <div class="relative w-full h-[450px] sm:h-[520px] rounded-[2rem] overflow-hidden shadow-2xl border border-slate-300/60 dark:border-slate-700/60 bg-gradient-to-b from-slate-200 to-slate-300 dark:from-slate-900 dark:to-slate-950 flex items-end justify-center group">
+
+                                <!-- Foto Profil Dikki Fadhillah dengan proporsi portrait penuh ala referensi -->
+                                <img id="profileImage" src="profil.png" alt="Dikki Fadhillah, S.Kom" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" onError="handleImageError()" />
+                                
+                                <!-- Placeholder SVG (Ditampilkan otomatis jika file foto belum ada) -->
+                                <div id="profilePlaceholder" class="hidden w-full h-full flex items-center justify-center">
+                                    <svg class="w-full h-full text-slate-400 dark:text-slate-600 p-8" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="100" cy="100" r="90" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+                                        <circle cx="100" cy="70" r="35" fill="currentColor" opacity="0.8"/>
+                                        <path d="M40 170C40 135 65 115 100 115C135 115 160 135 160 170V180H40V170Z" fill="currentColor" opacity="0.8"/>
+                                    </svg>
+                                </div>
+
+                                <!-- Bottom Gradient Overlay with Name & Role Badge -->
+                                <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent text-white flex justify-between items-end">
+                                    <div>
+                                        <h3 class="font-extrabold text-xl tracking-wide">DIKKI FADHILLAH</h3>
+                                        <p class="text-xs font-mono text-cyan-400 mt-0.5">City Leader & O&M Specialist</p>
+                                    </div>
+                                    <div class="px-3 py-1 rounded-full bg-cyan-600/90 text-white font-mono text-xs font-bold shadow-lg">
+                                        GPA 3.53
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge 1 (Top Right) -->
+                            <div class="absolute -top-4 -right-2 sm:right-4 bg-slate-900/90 text-cyan-400 border border-slate-700 backdrop-blur-md px-4 py-2 rounded-2xl text-xs font-mono shadow-xl flex items-center gap-2.5 animate-float">
+                                <i class="fas fa-project-diagram text-emerald-400 text-sm"></i>
+                                <div>
+                                    <div class="font-bold text-white">50.000 KM Ring</div>
+                                    <div class="text-[10px] text-slate-400">IOH Fiberization Project</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- METRICS COUNTER SECTION -->
+        <section class="py-10 bg-slate-100/80 dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    
+                    <div class="p-4 rounded-2xl glass-card">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-cyan-600 dark:text-cyan-400 font-mono">9+</div>
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium mt-1">Tahun Pengalaman Telekomunikasi & IT</div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl glass-card">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono">90%</div>
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium mt-1">KPI Realization Boost (Klari Sector)</div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl glass-card">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 font-mono">4.000</div>
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium mt-1">HP/Bulan FTTH XL Project Delivered</div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl glass-card">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-purple-600 dark:text-purple-400 font-mono">3+</div>
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium mt-1">Telegram Bot & App System Innovations</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT & SKILLS SECTION -->
+        <section id="about" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-mono font-semibold text-cyan-600 dark:text-cyan-400 tracking-wider uppercase mb-2">Profil & Kompetensi</h2>
+                    <p class="text-3xl font-extrabold tracking-tight sm:text-4xl">Keahlian Teknikal & Manajemen Operasional</p>
+                    <p class="mt-4 text-slate-600 dark:text-slate-400">Kombinasi latar belakang pendidikan Teknik Informatika dengan rekam jejak kepemimpinan lapangan di perusahaan penyedia infrastruktur telekomunikasi terkemuka Indonesia.</p>
+                </div>
+
+                <!-- Skills Grid by Categories -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Skill Card 1: FTTx & OSP Infrastructure -->
+                    <div class="p-6 rounded-2xl glass-card hover:border-cyan-500/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-xl mb-4 group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">FTTx & OSP Telecom</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Pengelolaan siklus hidup jaringan optik dari perencanaan design, provisioning, hingga preventive/corrective maintenance.</p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500"></i> O&M FTTx & OSP Infrastructure</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500"></i> Data Management Core FO & ManCore</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500"></i> ATP Test Procedure & Quality Control</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500"></i> GPON & XGSPON Technology</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Card 2: Data Analytics & Dashboards -->
+                    <div class="p-6 rounded-2xl glass-card hover:border-blue-500/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Data Analytics & Visualization</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Transformasi data operasional lapangan menjadi insight strategis dan pemantauan KPI secara langsung.</p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Google Looker Studio & Tableau</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Microsoft Power BI & Excel Pivot</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> AppSheet & Automated Reporting</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Technical Performance KPI Tracking</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Card 3: Network Engineering & Tools -->
+                    <div class="p-6 rounded-2xl glass-card hover:border-emerald-500/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Hardware Tools & NMS</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Penguasaan mendalam peralatan pengujian serat optik & perangkat lunak pengawasan jaringan.</p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> OTDR, Fusion Splicer, OPM, OLS, VFL</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Huawei U2000 & iMaster NCE</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> ZTE Netnumen, Fiberhome UNM2000</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> PRTG, Cacti, ACS iBooster</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Card 4: Web & Automation Development -->
+                    <div class="p-6 rounded-2xl glass-card hover:border-purple-500/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Automation & Web Dev</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Pengembangan sistem otomatisasi pelaporan berbasis Bot Telegram dan sistem manajemen berbasis web.</p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500"></i> Telegram Bot API Integration</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500"></i> Web Programming & Database</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500"></i> Core Data Mgmt App Development</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500"></i> Google Earth, QGIS & AutoCAD</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Card 5: Leadership & Management -->
+                    <div class="p-6 rounded-2xl glass-card hover:border-amber-500/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-users-gear"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Leadership & Management</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Memimpin teknisi internal & vendor, supervisi operasional regional, serta penanganan perizinan.</p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i> City Leadership & Vendor Supervision</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i> Permit & Site Acquisition Negotiation</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i> Resource & Maintenance Scheduling</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i> OHS / K3 Implementation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Card 6: Design & Multimedia -->
+                    <div class="p-6 rounded-2xl glass-card hover:border-pink-500/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-600 dark:text-pink-400 flex items-center justify-center text-xl mb-4 group-hover:bg-pink-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-photo-video"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Design & Creative Media</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Keahlian pendukung dalam dokumentasi visual, presentasi teknis, dan perancangan materi instruksional.</p>
+                        <ul class="space-y-2 text-xs font-mono text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-pink-500"></i> Adobe Photoshop & Lightroom</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-pink-500"></i> Corel Draw</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-pink-500"></i> DaVinci Resolve & CapCut</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-pink-500"></i> Technical Presentation Design</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK EXPERIENCE TIMELINE SECTION -->
+        <section id="experience" class="py-20 bg-slate-100/60 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-mono font-semibold text-cyan-600 dark:text-cyan-400 tracking-wider uppercase mb-2">Karir & Pengalaman kerja</h2>
+                    <p class="text-3xl font-extrabold tracking-tight sm:text-4xl">Rekam Jejak Profesional</p>
+                    <p class="mt-4 text-slate-600 dark:text-slate-400">Pengalaman kepemimpinan operasional, inspeksi infrastruktur, serta penanganan teknis dari tahun 2015 hingga saat ini.</p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-1/2 before:-ml-px before:w-0.5 before:bg-gradient-to-b before:from-cyan-500 before:via-blue-500 before:to-slate-300 dark:before:to-slate-800">
+
+                    <!-- Experience 1: Fiberstar City Leader -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 dark:border-slate-950 bg-cyan-600 text-white shadow font-bold text-xs shrink-0 z-10 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <i class="fas fa-building-user"></i>
+                        </div>
+                        
+                        <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl glass-card shadow-lg hover:shadow-cyan-500/10 transition-all border border-slate-200 dark:border-slate-800">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-mono">Sep 2024 - Juni 2025</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium"><i class="fas fa-map-marker-alt mr-1"></i>Cirebon, Majalengka, Indramayu</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">City Leader</h3>
+                            <h4 class="text-sm font-semibold text-cyan-600 dark:text-cyan-400 mb-3">PT Mega Akses Persada (Fiberstar)</h4>
+                            
+                            <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm list-disc list-inside">
+                                <li>Supervisi teknisi internal & kelola operasional divisi untuk mencapai target KPI (broadband provisioning/LMS, troubleshoot & maintenance infrastruktur).</li>
+                                <li>Membuat jadwal kerja teknisi & jadwal preventive maintenance site/PoP (Civil Mechanical Electrical) & OSP FO.</li>
+                                <li>Analisis area yang sering mengalami gangguan untuk program penyusunan preventive maintenance.</li>
+                                <li>Analisis penjualan produk broadband/LMS setiap bulan & supervisi vendor sesuai SOP.</li>
+                                <li>Inspeksi Quality Control (QC) pekerjaan lapangan terkait kualitas teknis instalasi & rekapitulasi inventaris material.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2: TBIG FTTH/FO Inspector -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 dark:border-slate-950 bg-blue-600 text-white shadow font-bold text-xs shrink-0 z-10 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <i class="fas fa-tower-cell"></i>
+                        </div>
+
+                        <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl glass-card shadow-lg hover:shadow-blue-500/10 transition-all border border-slate-200 dark:border-slate-800">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 font-mono">Agu 2023 - Jul 2024</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium"><i class="fas fa-map-marker-alt mr-1"></i>Bandung, Jawa Barat</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">FTTH / FO Inspector</h3>
+                            <h4 class="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-3">PT Tower Bersama Infrastructure Group (TBIG)</h4>
+                            
+                            <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm list-disc list-inside mb-4">
+                                <li>Supervisi vendor dan mengawal proyek dari penerbitan SPK hingga tahapan ATP (Acceptance Test Procedure).</li>
+                                <li>Supervisi proyek fiberisasi tower Telkomsel, IOH, XL, Smartfren serta FTTH XL Home & IOH Indosat Hifi.</li>
+                                <li>Negosiasi perizinan & site acquisition jaringan fiber optik.</li>
+                            </ul>
+
+                            <div class="p-3 rounded-xl bg-slate-200/50 dark:bg-slate-800/60 text-xs space-y-1">
+                                <p class="font-bold text-emerald-600 dark:text-emerald-400"><i class="fas fa-trophy mr-1"></i> Achievement & Innovation:</p>
+                                <p>• Successful delivery IOH Fiberization Q3 New Site (50.000km ultimate ring) & FTTH XL project 4.000 HP/bulan.</p>
+                                <p>• Membuat Field Supervisor Tracking Dashboard terintegrasi Project Manager worksheet.</p>
+                                <p>• Mengembangkan Sistem Aplikasi Data Management Core untuk FTTH XL Home Jambi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience 3: Telkom Akses TL Sector IOAN -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 dark:border-slate-950 bg-emerald-600 text-white shadow font-bold text-xs shrink-0 z-10 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <i class="fas fa-users"></i>
+                        </div>
+
+                        <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl glass-card shadow-lg hover:shadow-emerald-500/10 transition-all border border-slate-200 dark:border-slate-800">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono">Jul 2022 - Apr 2023</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium"><i class="fas fa-map-marker-alt mr-1"></i>Klari, Karawang</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Team Leader Sector IOAN</h3>
+                            <h4 class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-3">PT Telkom Akses</h4>
+                            
+                            <p class="text-slate-600 dark:text-slate-300 text-sm mb-3">Memimpin operasional Integrated Operation Access Network (IOAN), mapping teknisi, serta evaluasi KPI Customer Experience.</p>
+                            
+                            <div class="p-3 rounded-xl bg-slate-200/50 dark:bg-slate-800/60 text-xs space-y-1">
+                                <p class="font-bold text-emerald-600 dark:text-emerald-400"><i class="fas fa-star mr-1"></i> Achievement & Innovation:</p>
+                                <p>• Menaikkan realisasi KPI Sektor Klari dari **<60% menjadi 90%**.</p>
+                                <p>• Mengembangkan **Telegram Reporting Bot** teknisi IOAN untuk rekap penutupan trouble ticket & material.</p>
+                                <p>• Membuat Dashboard Infrastruktur ODC Klari & Dashboard Kinerja Teknisi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience 4: Telkom Akses TL Preventive Maintenance -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 dark:border-slate-950 bg-purple-600 text-white shadow font-bold text-xs shrink-0 z-10 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+
+                        <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl glass-card shadow-lg hover:shadow-purple-500/10 transition-all border border-slate-200 dark:border-slate-800">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 font-mono">Apr 2022 - Jul 2022</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium"><i class="fas fa-map-marker-alt mr-1"></i>Karawang, Jawa Barat</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Team Leader Preventive Maintenance</h3>
+                            <h4 class="text-sm font-semibold text-purple-600 dark:text-purple-400 mb-3">PT Telkom Akses</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">Pencegahan gangguan massal, koordinasi instansi PUPR & kompetitor, penanganan izin re-route jaringan, serta pengelolaan data ManCore FTM/NE/Valdat (OLT, FTM, ODC, ODP).</p>
+                            <span class="text-xs font-mono text-purple-600 dark:text-purple-400"><i class="fas fa-database mr-1"></i> Inovasi: Joint Database Core FTM Witel Karawang & Bot Telegram FTM Integrasi Sheet.</span>
+                        </div>
+                    </div>
+
+                    <!-- Experience 5: Early Technical Roles -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 dark:border-slate-950 bg-amber-600 text-white shadow font-bold text-xs shrink-0 z-10 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+
+                        <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl glass-card shadow-lg border border-slate-200 dark:border-slate-800">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 font-mono">2015 - 2022</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium"><i class="fas fa-map-marker-alt mr-1"></i>Purwakarta & Karawang</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Technician Roles (BGES, Maintenance, Provisioning)</h3>
+                            <h4 class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-3">PT Telkom Akses</h4>
+                            <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
+                                <li>• <strong>BGES Service Tech (2019-2022):</strong> Troubleshooting jaringan pelanggan korporat & BTS Telkomsel sesuai SLA. Alat: Trend Aurora ISDN, Splicer, OTDR, OPM, OLS.</li>
+                                <li>• <strong>Maintenance & QE Tech (2017-2019):</strong> Penanganan gangguan massal & check-up perangkat aktif (OLT, MSAN, MDU).</li>
+                                <li>• <strong>Provisioning & Migration Tech (2015-2017):</strong> Pemasangan jaringan & migrasi jaringan tembaga ke Fiber Optic.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INNOVATIONS & SYSTEM PORTFOLIO SECTION -->
+        <section id="innovations" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-mono font-semibold text-cyan-600 dark:text-cyan-400 tracking-wider uppercase mb-2">Inovasi & Digitalisasi Operasional</h2>
+                    <p class="text-3xl font-extrabold tracking-tight sm:text-4xl">Sistem & Aplikasi Yang Diciptakan</p>
+                    <p class="mt-4 text-slate-600 dark:text-slate-400">Pengembangan aplikasi khusus untuk efisiensi pelaporan teknisi, visualisasi GIS/ODC, dan otomatisasi pengelolaan core fiber optik.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Innovation 1: Telegram Reporting Bot -->
+                    <div class="rounded-2xl glass-card overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col justify-between group">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-2xl">
+                                    <i class="fab fa-telegram-plane"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Automation & Bot</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors">Telegram Reporting Bot untuk Teknisi Field</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                Bot Telegram otomatisasi pelaporan penutupan *trouble ticket* dan pemakaian material teknisi IOAN & FTM secara real-time yang terintegrasi langsung dengan database Google Sheets / ManCore data sheet.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-[11px] font-mono">
+                                <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">Telegram Bot API</span>
+                                <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">Google Apps Script</span>
+                                <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">Automated Analytics</span>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-slate-100/80 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                            <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold"><i class="fas fa-circle-check mr-1"></i> Digunakan di Witel Karawang</span>
+                            <button onclick="openProjectModal('telegram')" class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline">Detail Solusi →</button>
+                        </div>
+                    </div>
+
+                    <!-- Innovation 2: Core Data Management App -->
+                    <div class="rounded-2xl glass-card overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col justify-between group">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-2xl">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Core Fiber Data App</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors">Aplikasi Core Data Management FTTH & FTM</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                Aplikasi manajemen data inti alokasi core fiber optik untuk proyek FTTH XL Home Jambi dan seluruh wilayah Witel Karawang. Memudahkan mapping tube, core, ODF, dan ODC.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-[11px] font-mono">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400">Web App / AppSheet</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400">Fiber Mapping</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400">Inventory Core</span>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-slate-100/80 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                            <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold"><i class="fas fa-circle-check mr-1"></i> XL Home Jambi & Karawang</span>
+                            <button onclick="openProjectModal('coreapp')" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline">Detail Solusi →</button>
+                        </div>
+                    </div>
+
+                    <!-- Innovation 3: Field Supervisor & PM Tracking Dashboard -->
+                    <div class="rounded-2xl glass-card overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col justify-between group">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-2xl">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PM Dashboard</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-500 transition-colors">Field Supervisor & Project Manager Integrated Dashboard</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                Dashboard pelacakan progres pekerjaan lapangan yang terhubung langsung dengan worksheet Project Manager TBIG untuk monitoring status perizinan, pemasangan kabel, hingga ATP.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-[11px] font-mono">
+                                <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Looker Studio</span>
+                                <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Power BI</span>
+                                <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">PM Worksheet Sync</span>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-slate-100/80 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                            <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold"><i class="fas fa-circle-check mr-1"></i> Implemented at TBIG</span>
+                            <button onclick="openProjectModal('dashboard')" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">Detail Solusi →</button>
+                        </div>
+                    </div>
+
+                    <!-- Innovation 4: ODC Infrastructure Dashboard & Mapping -->
+                    <div class="rounded-2xl glass-card overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col justify-between group">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-2xl">
+                                    <i class="fas fa-map-location-dot"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">GIS & Mapping</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-purple-500 transition-colors">Dashboard Pemetaan Infrastruktur ODC & Teknisi Performance</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                Pemetaan visual lokasi Optical Distribution Cabinet (ODC) Sektor Klari berbasis GIS beserta matrik evaluasi produktivitas harian individual teknisi.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-[11px] font-mono">
+                                <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400">QGIS / Google Earth</span>
+                                <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400">Performance Metric</span>
+                                <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400">ODC Mapping</span>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-slate-100/80 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                            <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold"><i class="fas fa-circle-check mr-1"></i> Klari Sector Success</span>
+                            <button onclick="openProjectModal('odc')" class="text-xs font-semibold text-purple-600 dark:text-purple-400 hover:underline">Detail Solusi →</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INTERACTIVE FEATURE: FTTX LINK BUDGET / OPTICAL LOSS CALCULATOR -->
+        <section id="calculator" class="py-20 bg-slate-100/60 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono mb-3">
+                        <i class="fas fa-calculator"></i> Interactive Engineering Tool
+                    </div>
+                    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Kalkulator Fiber Optic Link Budget</h2>
+                    <p class="mt-3 text-slate-600 dark:text-slate-400">Simulasi perhitungan redaman total (Link Loss Budget) pada jaringan FTTH/GPON secara otomatis sesuai parameter O&M telekomunikasi.</p>
+                </div>
+
+                <div class="max-w-4xl mx-auto rounded-3xl glass-card p-6 sm:p-10 shadow-xl border border-slate-200 dark:border-slate-800">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        
+                        <!-- Inputs Column -->
+                        <div class="lg:col-span-7 space-y-4">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">
+                                <i class="fas fa-sliders text-cyan-500 mr-2"></i>Parameter Jaringan FO
+                            </h3>
+
+                            <!-- Distance Slider -->
+                            <div>
+                                <div class="flex justify-between text-xs font-mono font-medium mb-1">
+                                    <label for="distance">Panjang Kabel Fiber (KM)</label>
+                                    <span id="distVal" class="text-cyan-600 dark:text-cyan-400 font-bold">12.5 km</span>
+                                </div>
+                                <input type="range" id="distance" min="0.5" max="40" step="0.5" value="12.5" oninput="calculateLoss()" class="w-full accent-cyan-500 cursor-pointer">
+                            </div>
+
+                            <!-- Wavelength Selector -->
+                            <div>
+                                <label for="wavelength" class="block text-xs font-mono font-medium mb-1">Panjang Gelombang (Wavelength)</label>
+                                <select id="wavelength" onchange="calculateLoss()" class="w-full rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 p-2.5 text-sm font-mono focus:ring-2 focus:ring-cyan-500 outline-none">
+                                    <option value="0.35">1310 nm (Kabel SM: ~0.35 dB/km)</option>
+                                    <option value="0.22" selected>1550 nm (Kabel SM: ~0.22 dB/km)</option>
+                                    <option value="0.40">1490 nm Downstream GPON (~0.40 dB/km)</option>
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <!-- Splice Count -->
+                                <div>
+                                    <label for="splices" class="block text-xs font-mono font-medium mb-1">Jumlah Sambungan Splicing</label>
+                                    <input type="number" id="splices" value="6" min="0" max="50" oninput="calculateLoss()" class="w-full rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 p-2.5 text-sm font-mono focus:ring-2 focus:ring-cyan-500 outline-none">
+                                    <span class="text-[10px] text-slate-500">Estimasi ~0.1 dB / splice</span>
+                                </div>
+
+                                <!-- Connectors Count -->
+                                <div>
+                                    <label for="connectors" class="block text-xs font-mono font-medium mb-1">Jumlah Konektor (SC/UPC/APC)</label>
+                                    <input type="number" id="connectors" value="4" min="0" max="20" oninput="calculateLoss()" class="w-full rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 p-2.5 text-sm font-mono focus:ring-2 focus:ring-cyan-500 outline-none">
+                                    <span class="text-[10px] text-slate-500">Estimasi ~0.3 dB / connector</span>
+                                </div>
+                            </div>
+
+                            <!-- Splitter Ratio -->
+                            <div>
+                                <label for="splitter" class="block text-xs font-mono font-medium mb-1">Passive Optical Splitter Ratio</label>
+                                <select id="splitter" onchange="calculateLoss()" class="w-full rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 p-2.5 text-sm font-mono focus:ring-2 focus:ring-cyan-500 outline-none">
+                                    <option value="0">Tanpa Splitter (Direct Link / Backhaul)</option>
+                                    <option value="3.5">Splitter 1:2 (~3.5 dB)</option>
+                                    <option value="7.2">Splitter 1:4 (~7.2 dB)</option>
+                                    <option value="10.5">Splitter 1:8 (~10.5 dB)</option>
+                                    <option value="13.8" selected>Splitter 1:16 (~13.8 dB)</option>
+                                    <option value="17.2">Splitter 1:32 (~17.2 dB)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Results Column -->
+                        <div class="lg:col-span-5 flex flex-col justify-between bg-slate-900 text-white p-6 rounded-2xl border border-slate-800 relative overflow-hidden">
+                            <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
+                            
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">Hasil Simulasi Loss</span>
+                                    <span id="statusBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">PASS</span>
+                                </div>
+
+                                <div class="text-center py-4">
+                                    <div class="text-xs text-slate-400 font-mono mb-1">Total Estimated Link Loss</div>
+                                    <div id="totalLossResult" class="text-4xl font-extrabold font-mono text-cyan-400">18.35 dB</div>
+                                </div>
+
+                                <div class="space-y-2 text-xs font-mono border-t border-slate-800 pt-4 text-slate-300">
+                                    <div class="flex justify-between">
+                                        <span>Fiber Cable Loss:</span>
+                                        <span id="fiberLossVal">2.75 dB</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Splice Loss Total:</span>
+                                        <span id="spliceLossVal">0.60 dB</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Connector Loss Total:</span>
+                                        <span id="connectorLossVal">1.20 dB</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Splitter Attenuation:</span>
+                                        <span id="splitterLossVal">13.80 dB</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400 leading-relaxed">
+                                <i class="fas fa-circle-info text-cyan-400 mr-1"></i> Standar GPON Kelas B+ mensyaratkan batas max redaman total &le; 28.0 dB (Sensitivitas Receiver ONT: -8 dBm s/d -27 dBm).
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS & EDUCATION SECTION -->
+        <section id="certifications" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Education & Languages Column -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div>
+                            <h2 class="text-xs font-mono font-semibold text-cyan-600 dark:text-cyan-400 tracking-wider uppercase mb-2">Latar Belakang Akademis</h2>
+                            <h3 class="text-2xl font-bold tracking-tight mb-6">Pendidikan Resmi</h3>
+
+                            <div class="space-y-4">
+                                <div class="p-5 rounded-2xl glass-card border border-slate-200 dark:border-slate-800">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div>
+                                            <h4 class="font-bold text-lg text-slate-900 dark:text-white">STT Wastukancana Purwakarta</h4>
+                                            <p class="text-sm font-semibold text-cyan-600 dark:text-cyan-400">Sarjana Komputer (S.Kom) - Teknik Informatika</p>
+                                        </div>
+                                        <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 font-mono text-xs font-bold">Cumlaude</span>
+                                    </div>
+                                    <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-2">2017 - 2021 | IPK 3.53 dari 4.00</p>
+                                </div>
+
+                                <div class="p-5 rounded-2xl glass-card border border-slate-200 dark:border-slate-800">
+                                    <h4 class="font-bold text-lg text-slate-900 dark:text-white">SMK Negeri 1 Sukabumi</h4>
+                                    <p class="text-sm font-semibold text-cyan-600 dark:text-cyan-400">Teknik Elektronika Industri</p>
+                                    <p class="text-xs font-mono text-slate-500 dark:text-slate-400">2013 - 2015</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Language & Hobbies Box -->
+                        <div class="p-5 rounded-2xl glass-card border border-slate-200 dark:border-slate-800 space-y-4">
+                            <div>
+                                <h4 class="text-xs font-mono uppercase text-slate-400 mb-2">Bahasa (Languages)</h4>
+                                <div class="flex gap-4 text-sm font-medium">
+                                    <span class="flex items-center gap-2"><i class="fas fa-language text-cyan-500"></i> Bahasa Indonesia (Native)</span>
+                                    <span class="flex items-center gap-2"><i class="fas fa-globe text-cyan-500"></i> English (Professional)</span>
+                                </div>
+                            </div>
+                            <div class="border-t border-slate-200 dark:border-slate-800 pt-3">
+                                <h4 class="text-xs font-mono uppercase text-slate-400 mb-2">Hobi & Minat</h4>
+                                <div class="flex flex-wrap gap-2 text-xs">
+                                    <span class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800"><i class="fas fa-futbol mr-1 text-cyan-500"></i> Futsal</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800"><i class="fas fa-table-tennis-paddle-ball mr-1 text-cyan-500"></i> Badminton</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800"><i class="fas fa-person-running mr-1 text-cyan-500"></i> Jogging</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800"><i class="fas fa-book mr-1 text-cyan-500"></i> Membaca</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800"><i class="fas fa-music mr-1 text-cyan-500"></i> Musik</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications Grid Column -->
+                    <div class="lg:col-span-7">
+                        <h2 class="text-xs font-mono font-semibold text-cyan-600 dark:text-cyan-400 tracking-wider uppercase mb-2">Lisensi & Sertifikasi Industri</h2>
+                        <h3 class="text-2xl font-bold tracking-tight mb-6">Sertifikat Profesional</h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            
+                            <div class="p-4 rounded-xl glass-card border border-slate-200 dark:border-slate-800 flex items-start gap-3">
+                                <div class="p-2.5 rounded-lg bg-red-500/10 text-red-500 text-lg font-bold">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Basics of Disciplined Agile</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Project Management Institute (PMI) • 2024</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl glass-card border border-slate-200 dark:border-slate-800 flex items-start gap-3">
+                                <div class="p-2.5 rounded-lg bg-red-600/10 text-red-600 text-lg font-bold">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Introduction To GPON-XGSPON</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Telkom Corporate University • 2024</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl glass-card border border-slate-200 dark:border-slate-800 flex items-start gap-3">
+                                <div class="p-2.5 rounded-lg bg-blue-500/10 text-blue-500 text-lg font-bold">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Strategic Process Mgmt Excellent</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">TBIG Learning & Training • 2024</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl glass-card border border-slate-200 dark:border-slate-800 flex items-start gap-3">
+                                <div class="p-2.5 rounded-lg bg-cyan-500/10 text-cyan-500 text-lg font-bold">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Fiber Optic Certification</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">TBIG Learning & Training • 2023</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl glass-card border border-slate-200 dark:border-slate-800 flex items-start gap-3">
+                                <div class="p-2.5 rounded-lg bg-blue-600/10 text-blue-600 text-lg font-bold">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">CCNAv7: Introduction to Networks</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Cisco Digitalent Kominfo • 2020</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl glass-card border border-slate-200 dark:border-slate-800 flex items-start gap-3">
+                                <div class="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-500 text-lg font-bold">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Cyber Security Certification</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Fiber Academy Telkom Akses • 2020</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl glass-card border border-slate-200 dark:border-slate-800 flex items-start gap-3">
+                                <div class="p-2.5 rounded-lg bg-purple-500/10 text-purple-500 text-lg font-bold">
+                                    <i class="fas fa-plug"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Fiber Optic Operation & Maintenance</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Telkom Corporate University • 2020</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl glass-card border border-slate-200 dark:border-slate-800 flex items-start gap-3">
+                                <div class="p-2.5 rounded-lg bg-amber-500/10 text-amber-500 text-lg font-bold">
+                                    <i class="fas fa-hard-hat"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Basic of OHS (K3)</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Telkom Corporate University • 2018</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT & CONNECT SECTION -->
+        <section id="contact" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-cyan-500/10 blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-mono font-semibold text-cyan-400 tracking-wider uppercase mb-2">Mari Berkolaborasi</h2>
+                    <p class="text-3xl font-extrabold tracking-tight sm:text-4xl">Hubungi Dikki Fadhillah</p>
+                    <p class="mt-4 text-slate-400">Siap berkontribusi untuk posisi **City Leader, O&M Manager, Network Engineer, Data Analyst**, maupun proyek infrastruktur telekomunikasi Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <div class="lg:col-span-5 space-y-4">
+                        
+                        <div class="p-6 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-between group hover:border-cyan-500/50 transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-400 font-mono">Email Utama</div>
+                                    <a href="mailto:dickyfadhillah7@gmail.com" class="font-bold hover:text-cyan-400 transition-colors">dickyfadhillah7@gmail.com</a>
+                                </div>
+                            </div>
+                            <button onclick="copyEmail()" class="p-2.5 rounded-lg bg-slate-700 hover:bg-cyan-600 text-slate-300 hover:text-white transition-colors" title="Salin Email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-between group hover:border-emerald-500/50 transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-slate-400 font-mono">Telepon / WhatsApp</div>
+                                    <a href="https://wa.me/6281281112671" target="_blank" class="font-bold hover:text-emerald-400 transition-colors">+62 812 8111 2671</a>
+                                </div>
+                            </div>
+                            <button onclick="copyPhone()" class="p-2.5 rounded-lg bg-slate-700 hover:bg-emerald-600 text-slate-300 hover:text-white transition-colors" title="Salin Nomor HP">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">Domisili</div>
+                                <div class="font-bold text-sm">Cipanengah, Lembursitu, Kota Sukabumi, Jawa Barat</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 flex gap-4">
+                            <a href="https://www.linkedin.com/in/dikki-fadhillah" target="_blank" class="flex-1 py-3 px-4 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 font-medium text-sm flex items-center justify-center gap-2 hover:bg-blue-600 hover:text-white transition-all">
+                                <i class="fab fa-linkedin text-lg"></i> LinkedIn Profile
+                            </a>
+                            <a href="https://dickyfadhillah7.wixsite.com/profile" target="_blank" class="flex-1 py-3 px-4 rounded-xl bg-cyan-600/20 border border-cyan-500/30 text-cyan-400 font-medium text-sm flex items-center justify-center gap-2 hover:bg-cyan-600 hover:text-white transition-all">
+                                <i class="fas fa-globe text-lg"></i> Personal Website
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 p-8 rounded-3xl bg-slate-800/60 border border-slate-700 backdrop-blur-md">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                            <i class="fas fa-paper-plane text-cyan-400"></i> Kirim Pesan Langsung
+                        </h3>
+
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-400 mb-1">Nama Anda *</label>
+                                    <input type="text" required placeholder="Masukkan nama" class="w-full rounded-xl bg-slate-900 border border-slate-700 p-3 text-sm focus:ring-2 focus:ring-cyan-500 outline-none text-white placeholder-slate-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-400 mb-1">Email / Kontak *</label>
+                                    <input type="email" required placeholder="nama@perusahaan.com" class="w-full rounded-xl bg-slate-900 border border-slate-700 p-3 text-sm focus:ring-2 focus:ring-cyan-500 outline-none text-white placeholder-slate-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1">Subjek Pesan</label>
+                                <input type="text" placeholder="Tawaran Kerja / Diskusi Proyek FTTH" class="w-full rounded-xl bg-slate-900 border border-slate-700 p-3 text-sm focus:ring-2 focus:ring-cyan-500 outline-none text-white placeholder-slate-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1">Isi Pesan *</label>
+                                <textarea rows="4" required placeholder="Tuliskan pesan atau detail peluang kerjasama..." class="w-full rounded-xl bg-slate-900 border border-slate-700 p-3 text-sm focus:ring-2 focus:ring-cyan-500 outline-none text-white placeholder-slate-500"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold transition-all shadow-lg shadow-cyan-500/20 active:scale-98 flex items-center justify-center gap-2">
+                                <i class="fas fa-paper-plane"></i> Kirim Pesan Sekarang
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-slate-950 text-slate-500 border-t border-slate-800 text-xs text-center font-mono">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                &copy; <span id="currentYear"></span> Dikki Fadhillah, S.Kom. All rights reserved.
+            </div>
+            <div class="flex gap-4">
+                <a href="#hero" class="hover:text-cyan-400 transition-colors">Kembali ke Atas ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROJECT DETAIL MODAL -->
+    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-white rounded-full bg-slate-100 dark:bg-slate-800">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-900 text-white border border-cyan-500/50 shadow-2xl">
+            <div id="toastIcon" class="text-emerald-400 text-lg"><i class="fas fa-check-circle"></i></div>
+            <div id="toastMessage" class="text-sm font-medium font-mono">Notification message here</div>
+        </div>
+    </div>
+
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+        // 1. Theme Toggle (Dark / Light Mode)
+        const htmlElement = document.documentElement;
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const themeSunIcon = document.getElementById('themeSunIcon');
+        const themeMoonIcon = document.getElementById('themeMoonIcon');
+
+        function setTheme(isDark) {
+            if (isDark) {
+                htmlElement.classList.add('dark');
+                themeSunIcon.classList.remove('hidden');
+                themeMoonIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.classList.remove('dark');
+                themeSunIcon.classList.add('hidden');
+                themeMoonIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            setTheme(false);
+        } else {
+            setTheme(true);
+        }
+
+        themeBtn.addEventListener('click', () => {
+            const isDarkNow = htmlElement.classList.contains('dark');
+            setTheme(!isDarkNow);
+        });
+
+        // 2. Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 3. Dynamic Typing Effect in Hero
+        const typingTexts = [
+            "City Leader (Cirebon, Majalengka, Indramayu)",
+            "FTTx & Optical Infrastructure Lead",
+            "Data Analyst & Telegram Bot Innovator",
+            "S.Kom | Cumlaude (GPA 3.53)"
+        ];
+        let textIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typingEffect');
+
+        function typeLoop() {
+            const currentText = typingTexts[textIdx];
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIdx === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                textIdx = (textIdx + 1) % typingTexts.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeLoop, typeSpeed);
+        }
+        typeLoop();
+
+        // 4. Optical Fiber Link Budget Calculator Engine
+        function calculateLoss() {
+            const distance = parseFloat(document.getElementById('distance').value);
+            const wavelengthAttenuation = parseFloat(document.getElementById('wavelength').value);
+            const splices = parseInt(document.getElementById('splices').value) || 0;
+            const connectors = parseInt(document.getElementById('connectors').value) || 0;
+            const splitterLoss = parseFloat(document.getElementById('splitter').value) || 0;
+
+            document.getElementById('distVal').textContent = distance + ' km';
+
+            const fiberLoss = distance * wavelengthAttenuation;
+            const spliceLoss = splices * 0.10;
+            const connectorLoss = connectors * 0.30;
+            const totalLoss = fiberLoss + spliceLoss + connectorLoss + splitterLoss;
+
+            document.getElementById('fiberLossVal').textContent = fiberLoss.toFixed(2) + ' dB';
+            document.getElementById('spliceLossVal').textContent = spliceLoss.toFixed(2) + ' dB';
+            document.getElementById('connectorLossVal').textContent = connectorLoss.toFixed(2) + ' dB';
+            document.getElementById('splitterLossVal').textContent = splitterLoss.toFixed(2) + ' dB';
+            document.getElementById('totalLossResult').textContent = totalLoss.toFixed(2) + ' dB';
+
+            const statusBadge = document.getElementById('statusBadge');
+            if (totalLoss <= 25.0) {
+                statusBadge.className = "px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+                statusBadge.textContent = "PASS (Excellent)";
+            } else if (totalLoss <= 28.0) {
+                statusBadge.className = "px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-amber-500/20 text-amber-400 border border-amber-500/30";
+                statusBadge.textContent = "MARGINAL PASS";
+            } else {
+                statusBadge.className = "px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-red-500/20 text-red-400 border border-red-500/30";
+                statusBadge.textContent = "FAIL (High Attenuation)";
+            }
+        }
+        calculateLoss();
+
+        // 5. Toast Notification Manager
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMessage.textContent = msg;
+            if (isError) {
+                toastIcon.innerHTML = '<i class="fas fa-exclamation-circle text-red-400"></i>';
+            } else {
+                toastIcon.innerHTML = '<i class="fas fa-check-circle text-emerald-400"></i>';
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        function copyEmail() {
+            const email = "dickyfadhillah7@gmail.com";
+            const input = document.createElement('input');
+            input.value = email;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            showToast("Email (dickyfadhillah7@gmail.com) berhasil disalin!");
+        }
+
+        function copyPhone() {
+            const phone = "+6281281112671";
+            const input = document.createElement('input');
+            input.value = phone;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            showToast("Nomor HP (+6281281112671) berhasil disalin!");
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            showToast("Pesan Anda berhasil dikirim! Terima kasih.");
+            document.getElementById('contactForm').reset();
+        }
+
+        const projectData = {
+            telegram: {
+                title: "Telegram Reporting Bot untuk Teknisi Field",
+                subtitle: "PT Telkom Akses (Klari & Karawang)",
+                tech: ["Telegram Bot API", "Google Apps Script", "Real-Time Google Sheets Database"],
+                desc: "Sistem inovasi pelaporan otomatis yang dikembangkan untuk mempermudah teknisi IOAN dan FTM dalam melakukan penutupan trouble ticket gangguan dan pencatatan pemakaian material di lapangan.",
+                highlights: [
+                    "Pengurangan waktu penutupan tiket dan rekonsiliasi stok material.",
+                    "Terintegrasi otomatis dengan sheet data ManCore & worksheet inventaris.",
+                    "Meningkatkan akurasi data pemakaian kabel & komponen optik di lapangan."
+                ]
+            },
+            coreapp: {
+                title: "Sistem Aplikasi Core Data Management FTTH & FTM",
+                subtitle: "PT TBIG (XL Home Jambi) & Telkom Akses Karawang",
+                tech: ["Web Programming", "AppSheet", "Core FO Database Architecture"],
+                desc: "Sistem aplikasi terpusat untuk mengelola alokasi core fiber optik (Feeder, Distribution, ODC, ODP) secara presisi di seluruh area Witel Karawang dan Proyek FTTH XL Home Jambi.",
+                highlights: [
+                    "Menyediakan joint database alokasi core FTM lintas sektor.",
+                    "Meminimalkan resiko salah pangkas atau klaim core saat pemeliharaan jaringan.",
+                    "Integrasi validasi data lapangan dari tim FTM, NE, dan Valdat."
+                ]
+            },
+            dashboard: {
+                title: "Field Supervisor & PM Integrated Dashboard",
+                subtitle: "PT Tower Bersama Infrastructure Group (TBIG)",
+                tech: ["Looker Studio", "Power BI", "Worksheet Integration"],
+                desc: "Dashboard monitoring interaktif yang menghubungkan laporan harian supervisor lapangan langsung ke worksheet Project Manager (PM) untuk pemantauan proyek FTTH dan Fiberisasi.",
+                highlights: [
+                    "Monitoring real-time progres pekerjaan dari SPK hingga tahap ATP.",
+                    "Pengawasan 4.000 HP/bulan/vendor secara presisi.",
+                    "Akselerasi review dokumen RFS (Ready For Service) dalam < 1 hari."
+                ]
+            },
+            odc: {
+                title: "Dashboard Infrastruktur ODC & Mapping Teknisi",
+                subtitle: "PT Telkom Akses (Klari Sector)",
+                tech: ["QGIS", "Google Earth GIS", "Performance Tracking"],
+                desc: "Visualisasi spasial infrastruktur Optical Distribution Cabinet (ODC) sektor Klari beserta pemetaan wilayah kerja & evaluasi KPI teknisi.",
+                highlights: [
+                    "Peta interaktif persebaran ODC dan kabel distribusi.",
+                    "Evaluasi KPI harian yang berkontribusi mendongkrak performa sektor dari <60% menjadi 90%.",
+                    "Memudahkan pemetaan lokasi gangguan massal secara instan."
+                ]
+            }
+        };
+
+        function openProjectModal(key) {
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+            const data = projectData[key];
+
+            if (!data) return;
+
+            content.innerHTML = `
+                <div class="space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-500 text-xs font-mono font-bold">
+                        ${data.subtitle}
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">${data.title}</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">${data.desc}</p>
+                    
+                    <div class="border-t border-b border-slate-200 dark:border-slate-800 py-4 my-4">
+                        <h4 class="font-bold text-sm mb-2 text-slate-900 dark:text-white">Dampak & Keystone Results:</h4>
+                        <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
+                            ${data.highlights.map(h => `<li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500"></i> ${h}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-xs uppercase font-mono text-slate-400 mb-2">Teknologi Terkait:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${data.tech.map(t => `<span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-cyan-600 dark:text-cyan-400 font-mono text-xs">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function handleImageError() {
+            document.getElementById('profileImage').style.display = 'none';
+            document.getElementById('profilePlaceholder').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

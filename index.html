@@ -54,6 +54,28 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
         
+        .bottom-nav-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        .dark .bottom-nav-glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bottom-nav-item.active {
+            color: #06b6d4;
+            font-weight: 700;
+        }
+        .bottom-nav-item.active i {
+            transform: translateY(-2px) scale(1.1);
+            color: #06b6d4;
+        }
+        
         .tech-grid-bg {
             background-size: 30px 30px;
             background-image: 
@@ -132,27 +154,42 @@
                     <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-sm transition-all shadow-md shadow-cyan-600/20 active:scale-95">
                         <i class="fas fa-paper-plane mr-2 text-xs"></i> Hubungi Saya
                     </a>
-
-                    <!-- Mobile Menu Button -->
-                    <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Menu Drawer -->
-        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-2">
-            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Tentang</a>
-            <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Pengalaman Kerja</a>
-            <a href="#innovations" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inovasi & Sistem</a>
-            <a href="#calculator" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">FO Calculator Tool</a>
-            <a href="#certifications" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sertifikasi & Edukasi</a>
-            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg bg-cyan-600 text-white font-medium text-center">Kontak Saya</a>
-        </div>
     </header>
 
-    <main>
+    <!-- NATIVE MOBILE BOTTOM NAVIGATION BAR -->
+    <nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bottom-nav-glass shadow-2xl px-2 py-2 transition-all duration-300">
+        <div class="flex items-center justify-around max-w-md mx-auto">
+            <a href="#hero" class="bottom-nav-item active flex flex-col items-center py-1 px-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 active:scale-90 transition-all">
+                <i class="fas fa-house text-lg mb-1 transition-transform"></i>
+                <span class="text-[10px] font-mono tracking-tight">Beranda</span>
+            </a>
+            <a href="#about" class="bottom-nav-item flex flex-col items-center py-1 px-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 active:scale-90 transition-all">
+                <i class="fas fa-user-gear text-lg mb-1 transition-transform"></i>
+                <span class="text-[10px] font-mono tracking-tight">Profil</span>
+            </a>
+            <a href="#experience" class="bottom-nav-item flex flex-col items-center py-1 px-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 active:scale-90 transition-all">
+                <i class="fas fa-briefcase text-lg mb-1 transition-transform"></i>
+                <span class="text-[10px] font-mono tracking-tight">Karir</span>
+            </a>
+            <a href="#innovations" class="bottom-nav-item flex flex-col items-center py-1 px-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 active:scale-90 transition-all">
+                <i class="fas fa-code text-lg mb-1 transition-transform"></i>
+                <span class="text-[10px] font-mono tracking-tight">Inovasi</span>
+            </a>
+            <a href="#calculator" class="bottom-nav-item flex flex-col items-center py-1 px-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 active:scale-90 transition-all">
+                <i class="fas fa-calculator text-lg mb-1 transition-transform"></i>
+                <span class="text-[10px] font-mono tracking-tight">Tools</span>
+            </a>
+            <a href="#contact" class="bottom-nav-item flex flex-col items-center py-1 px-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 active:scale-90 transition-all">
+                <i class="fas fa-paper-plane text-lg mb-1 transition-transform"></i>
+                <span class="text-[10px] font-mono tracking-tight">Kontak</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="pb-20 md:pb-0">
         <!-- HERO SECTION (Revised Layout & Photo Sizing inspired by reference design) -->
         <section id="hero" class="relative pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1011,7 +1048,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-8 bg-slate-950 text-slate-500 border-t border-slate-800 text-xs text-center font-mono">
+    <footer class="py-8 mb-16 md:mb-0 bg-slate-950 text-slate-500 border-t border-slate-800 text-xs text-center font-mono">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
                 &copy; <span id="currentYear"></span> Dikki Fadhillah, S.Kom. All rights reserved.
@@ -1077,18 +1114,30 @@
             setTheme(!isDarkNow);
         });
 
-        // 2. Mobile Menu Toggle
-        const mobileBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        // 2. Mobile Bottom Navigation Active Scroll Observer
+        const sections = document.querySelectorAll('section[id]');
+        const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
 
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        function updateActiveBottomNav() {
+            let scrollY = window.pageYOffset;
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 120;
+                const sectionId = current.getAttribute('id');
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    bottomNavItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === `#${sectionId}`) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
             });
-        });
+        }
+
+        window.addEventListener('scroll', updateActiveBottomNav);
 
         // 3. Dynamic Typing Effect in Hero
         const typingTexts = [
